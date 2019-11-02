@@ -20,7 +20,7 @@ composer require lpuddu/php-provably-fair
 $algorithm = 'sha256';
 $generator = new Generator($algorithm);
 ```
-If not provided, the `Generator` will use the `sha512/256` algorithm.
+If not provided, the `Generator` will use the **sha512/256** algorithm.
 
 Get the full list of supported algorithms [here](https://www.php.net/manual/en/function.hash-hmac-algos.php).
 
@@ -43,6 +43,3 @@ MIT. Please see the [license file](license.md) for more information.
 [link-downloads]: https://packagist.org/packages/lpuddu/php-provably-fair
 [link-travis]: https://travis-ci.org/lpuddu/php-provably-fair
 [link-author]: https://github.com/LucaPuddu
-[link-spatie]: https://github.com/spatie/laravel-permission
-[link-waavi]: https://github.com/Waavi/translation
-[link-config]: config/php-provably-fair.php
