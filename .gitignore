@@ -1,7 +1,6 @@
 /vendor
 /.idea
 /tests/.reports
-
 composer.lock
 .php_cs.cache
 .phpunit.result.cache

@@ -1,8 +1,17 @@
 {
     "name": "lucapuddu/php-provably-fair",
+    "license": "MIT",
     "type": "library",
     "description": "PhpProvablyFair is a library that generates and verifies provably fair games.",
     "keywords": ["provably", "fair", "gambling"],
+    "homepage": "https://github.com/lpuddu/php-provably-fair",
+    "authors": [
+        {
+            "name": "Luca Puddu",
+            "email": "info@lucapuddu.com",
+            "homepage": "https://www.lucapuddu.com"
+        }
+    ],
     "require": {
         "php": "^7.2"
     },
