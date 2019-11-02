@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="PhpProvablyFair">
+    <description>The coding standard for the PhpProvablyFair library.</description>
+
+    <rule ref="PSR1"/>
+    <rule ref="PSR12"/>
+
+    <file>src/</file>
+    <file>tests/</file>
+
+    <exclude-pattern>vendor</exclude-pattern>
+</ruleset>
