@@ -9,6 +9,7 @@ return PhpCsFixer\Config::create()
     ->setRules([
         '@PSR1' => true,
         '@PSR2' => true,
+        'no_unused_imports' => true,
         'array_syntax' => ['syntax' => 'short'],
     ])
     ->setFinder($finder);

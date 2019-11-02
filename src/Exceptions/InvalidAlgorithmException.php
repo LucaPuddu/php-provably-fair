@@ -4,7 +4,7 @@ namespace PhpProvablyFair\Exceptions;
 
 use Exception;
 
-class AlgorithmNotSupportedException extends Exception
+class InvalidAlgorithmException extends Exception
 {
     /**
      * AlgorithmNotSupportedException constructor.
@@ -13,8 +13,8 @@ class AlgorithmNotSupportedException extends Exception
     public function __construct(?string $algo = null)
     {
         if (is_null($algo)) {
-            $message = "Algorithm not supported.";
-        }  else {
+            $message = 'Algorithm not provided.';
+        } else {
             $message = "Algorithm {$algo} not supported.";
         }
         parent::__construct($message);

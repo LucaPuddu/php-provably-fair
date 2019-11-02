@@ -2,7 +2,8 @@
 
 namespace PhpProvablyFair;
 
-use PhpProvablyFair\Exceptions\AlgorithmNotSupportedException;
+use PhpProvablyFair\Interfaces\GeneratorInterface;
+use PhpProvablyFair\Interfaces\ProvablyFairInterface;
 
 /**
  * Class Generator
@@ -10,32 +11,13 @@ use PhpProvablyFair\Exceptions\AlgorithmNotSupportedException;
  * See https://www.php.net/manual/en/function.hash-hmac-algos.php for a list of supported algorithms
  * @package PhpProvablyFair
  */
-class Generator
+class Generator extends ProvablyFair implements GeneratorInterface, ProvablyFairInterface
 {
-    /** @var string */
-    private const DEFAULT_ALGORITHM = 'sha512/256';
-    /** @var string */
-    private $algorithm;
-
     /**
-     * Generator constructor.
-     *
-     * @param string|null $algorithm The hmac algorithm that this Generator instance will use.
-     * @throws AlgorithmNotSupportedException
+     * Generate a value for a provably fair game
      */
-    public function __construct(?string $algorithm = self::DEFAULT_ALGORITHM)
+    public function generate(): float
     {
-        if (!in_array($algorithm, hash_hmac_algos())) {
-            throw new AlgorithmNotSupportedException($algorithm);
-        }
-        $this->algorithm = $algorithm;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAlgorithm(): string
-    {
-        return $this->algorithm;
+        return 0.0;
     }
 }

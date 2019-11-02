@@ -2,44 +2,57 @@
 
 namespace PhpProvablyFair\Tests;
 
-use PhpProvablyFair\Exceptions\AlgorithmNotSupportedException;
+use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
 use PhpProvablyFair\Generator;
 use PHPUnit\Framework\TestCase;
 
 class GeneratorTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function itCreatesAnInstanceWithAValidHmacAlgorithm()
+    /** @var Generator */
+    private $generator;
+
+    protected function setUp(): void
     {
-        foreach (hash_hmac_algos() as $hash_hmac_algo) {
-            try {
-                $generator = new Generator($hash_hmac_algo);
-                $this->assertNotNull($generator);
-            } catch (\Exception $exception) {
-                $this->fail($exception->getMessage());
-            }
-        }
+        parent::setUp();
+        $this->generator = new Generator();
+    }
+
+    public function generationProvider()
+    {
+        return [
+            ['sha512/256', 'serverseed', 'clientseed', 'nonce', 0, 100, 42],
+            ['sha512/256', 'serverseed', 'clientseed', 'nonce', 0, 100, 42],
+        ];
     }
 
     /**
      * @test
+     * @dataProvider generationProvider
+     * @param string $algorithm
+     * @param string $serverSeed
+     * @param string $clientSeed
+     * @param string $nonce
+     * @param float  $min
+     * @param float  $max
+     * @param float  $result
+     * @throws InvalidAlgorithmException
      */
-    public function itUsesSha512256ByDefaultIfNoAlgorithmIsProvided()
-    {
-        $generator = new Generator();
+    public function itGeneratesACorrectOutput(
+        string $algorithm,
+        string $serverSeed,
+        string $clientSeed,
+        string $nonce,
+        float $min,
+        float $max,
+        float $result
+    ) {
+        $this->generator->setAlgorithm($algorithm);
+        $this->generator->setClientSeed($clientSeed);
+        $this->generator->setServerSeed($serverSeed);
+        $this->generator->setNonce($nonce);
+        $this->generator->setMin($min);
+        $this->generator->setMax($max);
 
-        $this->assertEquals('sha512/256', $generator->getAlgorithm());
-    }
-
-    /**
-     * @test
-     */
-    public function itThrowsAlgorithmNotSupportedExceptionIfTheAlgorithmIsNotValid()
-    {
-        $this->expectException(AlgorithmNotSupportedException::class);
-
-        new Generator('invalid hmac algorithm');
+        $this->assertEquals($result, $this->generator->generate());
     }
 }
