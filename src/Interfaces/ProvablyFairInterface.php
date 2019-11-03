@@ -3,6 +3,7 @@
 namespace PhpProvablyFair\Interfaces;
 
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use PhpProvablyFair\Exceptions\InvalidRangeException;
 
 interface ProvablyFairInterface
 {
@@ -60,17 +61,19 @@ interface ProvablyFairInterface
     public function getMin(): float;
 
     /**
-     * @param float $min
-     */
-    public function setMin(float $min): void;
-
-    /**
      * @return float
      */
     public function getMax(): float;
 
     /**
-     * @param float $max
+     * @return float[]
      */
-    public function setMax(float $max): void;
+    public function getRange(): array;
+
+    /**
+     * @param float $min
+     * @param float $max
+     * @throws InvalidRangeException
+     */
+    public function setRange(float $min, float $max): void;
 }

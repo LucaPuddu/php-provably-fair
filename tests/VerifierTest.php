@@ -3,6 +3,7 @@
 namespace PhpProvablyFair\Tests;
 
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use PhpProvablyFair\Exceptions\InvalidRangeException;
 use PhpProvablyFair\Verifier;
 use PHPUnit\Framework\TestCase;
 
@@ -32,10 +33,11 @@ class VerifierTest extends TestCase
      * @param string $serverSeed
      * @param string $clientSeed
      * @param string $nonce
-     * @param float $min
-     * @param float $max
-     * @param float $result
+     * @param float  $min
+     * @param float  $max
+     * @param float  $result
      * @throws InvalidAlgorithmException
+     * @throws InvalidRangeException
      */
     public function itVerifiesCorrectly(
         string $algorithm,
@@ -50,8 +52,7 @@ class VerifierTest extends TestCase
         $this->verifier->setClientSeed($clientSeed);
         $this->verifier->setServerSeed($serverSeed);
         $this->verifier->setNonce($nonce);
-        $this->verifier->setMin($min);
-        $this->verifier->setMax($max);
+        $this->verifier->setRange($min, $max);
 
         $this->assertTrue($this->verifier->verify($result));
         $this->assertFalse($this->verifier->verify('incorrect'));

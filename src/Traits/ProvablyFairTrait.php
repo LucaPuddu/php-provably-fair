@@ -3,6 +3,7 @@
 namespace PhpProvablyFair\Traits;
 
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use PhpProvablyFair\Exceptions\InvalidRangeException;
 
 trait ProvablyFairTrait
 {
@@ -96,14 +97,6 @@ trait ProvablyFairTrait
     }
 
     /**
-     * @param float $min
-     */
-    public function setMin(float $min): void
-    {
-        $this->min = $min;
-    }
-
-    /**
      * @return float
      */
     public function getMax(): float
@@ -112,10 +105,25 @@ trait ProvablyFairTrait
     }
 
     /**
-     * @param float $max
+     * @return float[]
      */
-    public function setMax(float $max): void
+    public function getRange(): array
     {
+        return [$this->min, $this->max];
+    }
+
+    /**
+     * @param float $min
+     * @param float $max
+     * @throws InvalidRangeException
+     */
+    public function setRange(float $min, float $max): void
+    {
+        if ($min >= $max) {
+            throw new InvalidRangeException($min, $max);
+        }
+
+        $this->min = $min;
         $this->max = $max;
     }
 }

@@ -3,6 +3,7 @@
 namespace PhpProvablyFair\Tests;
 
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use PhpProvablyFair\Exceptions\InvalidRangeException;
 use PhpProvablyFair\Generator;
 use PHPUnit\Framework\TestCase;
 
@@ -36,6 +37,7 @@ class GeneratorTest extends TestCase
      * @param float  $max
      * @param float  $result
      * @throws InvalidAlgorithmException
+     * @throws InvalidRangeException
      */
     public function itGeneratesACorrectOutput(
         string $algorithm,
@@ -50,8 +52,7 @@ class GeneratorTest extends TestCase
         $this->generator->setClientSeed($clientSeed);
         $this->generator->setServerSeed($serverSeed);
         $this->generator->setNonce($nonce);
-        $this->generator->setMin($min);
-        $this->generator->setMax($max);
+        $this->generator->setRange($min, $max);
 
         $this->assertEquals($result, $this->generator->generate());
     }

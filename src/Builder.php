@@ -54,21 +54,13 @@ abstract class Builder implements BuilderInterface
 
     /**
      * @param float $min
-     * @return BuilderInterface
-     */
-    public function min(float $min): BuilderInterface
-    {
-        $this->provablyFair->setMin($min);
-        return $this;
-    }
-
-    /**
      * @param float $max
      * @return BuilderInterface
+     * @throws Exceptions\InvalidRangeException
      */
-    public function max(float $max): BuilderInterface
+    public function range(float $min, float $max): BuilderInterface
     {
-        $this->provablyFair->setMax($max);
+        $this->provablyFair->setRange($min, $max);
         return $this;
     }
 }

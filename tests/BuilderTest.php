@@ -4,6 +4,7 @@ namespace PhpProvablyFair\Tests;
 
 use PhpProvablyFair\Builder;
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use PhpProvablyFair\Exceptions\InvalidRangeException;
 use PhpProvablyFair\Interfaces\BuilderInterface;
 use PhpProvablyFair\Interfaces\ProvablyFairInterface;
 use PHPUnit\Framework\TestCase;
@@ -44,6 +45,7 @@ class BuilderTest extends TestCase
     /**
      * @test
      * @throws InvalidAlgorithmException
+     * @throws InvalidRangeException
      */
     public function itCallsTheProvablyFairSetters()
     {
@@ -51,15 +53,13 @@ class BuilderTest extends TestCase
         $this->provablyFair->expects($this->once())->method('setServerSeed')->with('server seed');
         $this->provablyFair->expects($this->once())->method('setClientSeed')->with('client seed');
         $this->provablyFair->expects($this->once())->method('setNonce')->with('nonce');
-        $this->provablyFair->expects($this->once())->method('setMin')->with(42);
-        $this->provablyFair->expects($this->once())->method('setMax')->with(42);
+        $this->provablyFair->expects($this->once())->method('setRange')->with(2, 34);
 
         $this->builder->algorithm('sha256');
         $this->builder->serverSeed('server seed');
         $this->builder->clientSeed('client seed');
         $this->builder->nonce('nonce');
-        $this->builder->min(42);
-        $this->builder->max(42);
+        $this->builder->range(2, 34);
     }
 
     /**
@@ -67,6 +67,20 @@ class BuilderTest extends TestCase
      * @throws InvalidAlgorithmException
      */
     public function itDoesntCatchInvalidAlgorithmException()
+    {
+        $this->expectException(InvalidAlgorithmException::class);
+
+        $this->provablyFair->method('setAlgorithm')
+            ->willThrowException(new InvalidAlgorithmException('error'));
+
+        $this->builder->algorithm('invalid HMAC algorithm');
+    }
+
+    /**
+     * @test
+     * @throws InvalidAlgorithmException
+     */
+    public function itDoesntCatchInvalidRangeException()
     {
         $this->expectException(InvalidAlgorithmException::class);
 

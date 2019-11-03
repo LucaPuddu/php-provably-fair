@@ -33,15 +33,10 @@ interface BuilderInterface
 
     /**
      * @param float $min
-     * @return BuilderInterface
-     */
-    public function min(float $min): BuilderInterface;
-
-    /**
      * @param float $max
      * @return BuilderInterface
      */
-    public function max(float $max): BuilderInterface;
+    public function range(float $min, float $max): BuilderInterface;
 
     /**
      * @return ProvablyFairInterface

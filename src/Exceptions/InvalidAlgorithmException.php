@@ -7,15 +7,15 @@ use Exception;
 class InvalidAlgorithmException extends Exception
 {
     /**
-     * AlgorithmNotSupportedException constructor.
-     * @param string|null $algo
+     * InvalidAlgorithmException constructor.
+     * @param string|null $algorithm
      */
-    public function __construct(?string $algo = null)
+    public function __construct(?string $algorithm = null)
     {
-        if (is_null($algo)) {
+        if (is_null($algorithm)) {
             $message = 'Algorithm not provided.';
         } else {
-            $message = "Algorithm {$algo} not supported.";
+            $message = "Algorithm {$algorithm} not supported.";
         }
         parent::__construct($message);
     }
