@@ -58,7 +58,7 @@ echo $output;   //23.752100169784
 ### Verify a roll
 ```
 ...
-$generator->verify(34.3343434); // true
+$generator->verify(38.325308655221); // true
 ```
 
 ### Security
