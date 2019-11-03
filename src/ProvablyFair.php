@@ -8,6 +8,15 @@ use PhpProvablyFair\Interfaces\ProvablyFairInterface;
 
 class ProvablyFair implements ProvablyFairInterface
 {
+    /** @var int */
+    public const BYTES = 6;
+    /** @var float */
+    public const DEFAULT_MIN = 0;
+    /** @var float */
+    public const DEFAULT_MAX = 100;
+    /** @var string */
+    public const DEFAULT_ALGORITHM = 'sha512/256';
+
     /** @var string */
     protected $algorithm;
     /** @var string */
