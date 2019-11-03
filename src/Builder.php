@@ -14,9 +14,18 @@ class Builder implements BuilderInterface
     /**
      * Builder constructor.
      */
-    public function __construct()
+    private function __construct()
     {
         $this->provablyFair = new ProvablyFair();
+    }
+
+    /**
+     * Return a new instance of itself
+     * @return Builder
+     */
+    public static function make(): BuilderInterface
+    {
+        return new Builder();
     }
 
     /**

@@ -139,7 +139,7 @@ class ProvablyFair implements ProvablyFairInterface
     /**
      * Generate a value for a provably fair game
      */
-    public function generate(): float
+    public function roll(): float
     {
         $hash = hash_hmac($this->algorithm, "{$this->clientSeed}-{$this->nonce}", $this->serverSeed);
         $hash = substr($hash, 6, self::BYTES);
@@ -158,6 +158,6 @@ class ProvablyFair implements ProvablyFairInterface
      */
     public function verify(float $result): bool
     {
-        return bccomp("{$result}", "{$this->generate()}", 6) == 0;
+        return bccomp("{$result}", "{$this->roll()}", 6) == 0;
     }
 }

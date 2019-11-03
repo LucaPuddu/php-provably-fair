@@ -69,7 +69,7 @@ interface ProvablyFairInterface
      * Generate a value for a provably fair game
      * @return float
      */
-    public function generate(): float;
+    public function roll(): float;
 
     /**
      * Verify a value for a provably fair game

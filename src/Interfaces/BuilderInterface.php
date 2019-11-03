@@ -2,10 +2,17 @@
 
 namespace PhpProvablyFair\Interfaces;
 
+use PhpProvablyFair\Builder;
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
 
 interface BuilderInterface
 {
+    /**
+     * Return a new instance of itself
+     * @return Builder
+     */
+    public static function make(): BuilderInterface;
+
     /**
      * @param string $algorithm
      * @return BuilderInterface

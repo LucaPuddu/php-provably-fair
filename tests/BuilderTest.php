@@ -24,7 +24,7 @@ class BuilderTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->builder = new Builder();
+        $this->builder = Builder::make();
 
         $this->provablyFair = $this->getMockBuilder(ProvablyFairInterface::class)->getMock();
         $reflection = new ReflectionClass($this->builder);
@@ -38,7 +38,7 @@ class BuilderTest extends TestCase
      */
     public function itBuildsAProvablyFairObject()
     {
-        $this->assertInstanceOf(ProvablyFair::class, (new Builder())->build());
+        $this->assertInstanceOf(ProvablyFair::class, Builder::make()->build());
     }
 
     /**

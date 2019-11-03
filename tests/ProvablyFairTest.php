@@ -27,6 +27,9 @@ class ProvablyFairTest extends TestCase
             ['sha512/256', 'other server seed', 'other client seed', '1', 90, 100, 95.732252343431],
             ['sha512/256', 'server seed', 'client seed', '1', 0, 100, 36.366011879802],
             ['sha512', 'server seed', 'client seed', '1', 0, 100, 13.194889616662],
+            ['sha512', 'server seed', 'client seed', '1', 0, 100, 13.194889616662],
+            ['sha256', 'server seed', 'client seed', 'nonce', 23.75, 44, 38.325308655221],
+            ['sha256', 'server seed', 'client seed', 'new nonce', 23.75, 44, 23.752100169784],
         ];
     }
 
@@ -121,7 +124,7 @@ class ProvablyFairTest extends TestCase
         $this->provablyFair->setNonce($nonce);
         $this->provablyFair->setRange($min, $max);
 
-        $this->assertEquals(0, bccomp("$result", "{$this->provablyFair->generate()}", 6));
+        $this->assertEquals(0, bccomp("$result", "{$this->provablyFair->roll()}", 6));
     }
 
     /**

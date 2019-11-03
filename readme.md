@@ -15,14 +15,51 @@ composer require lpuddu/php-provably-fair
 
 ## Usage
 
-### Create a new Generator
-```php
-$algorithm = 'sha256';
-$generator = new Generator($algorithm);
+### Create a `ProvablyFair` Object
 ```
-If not provided, the `Generator` will use the **sha512/256** algorithm.
+$algorithm = 'sha256';
+$serverSeed = 'server seed';
+$clientSeed = 'client seed';
+$nonce = 'nonce';
+$min = 23.75;
+$max = 44;
+$generator = Builder::make()
+                    ->algorithm($algorithm)
+                    ->serverSeed($serverSeed)
+                    ->clientSeed($clientSeed)
+                    ->nonce($nonce)
+                    ->min($min)
+                    ->max($max)
+                    ->build();
+```
+##### Default values
+```
+$algorithm = 'sha512/256';
+$min = 0;
+$max = 100;
+```
 
 Get the full list of supported algorithms [here](https://www.php.net/manual/en/function.hash-hmac-algos.php).
+
+### Roll a number
+```php
+...
+$output = $generator->generate();
+echo $output;   //38.325308655221
+
+// Change ProvablyFair state
+$generator->setNonce = 'new nonce';
+
+// Roll a new number
+$output = $generator->generate();
+echo $output;   //23.752100169784
+```
+
+### Verify a roll
+```
+...
+$generator->verify(34.3343434); // true
+```
 
 ### Security
 
