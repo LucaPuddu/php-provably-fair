@@ -7,6 +7,8 @@ use PhpProvablyFair\Exceptions\InvalidRangeException;
 
 interface ProvablyFairInterface
 {
+    /** @var int */
+    public const BYTES = 6;
     /** @var float */
     public const DEFAULT_MIN = 0;
     /** @var float */
@@ -66,14 +68,22 @@ interface ProvablyFairInterface
     public function getMax(): float;
 
     /**
-     * @return float[]
-     */
-    public function getRange(): array;
-
-    /**
      * @param float $min
      * @param float $max
      * @throws InvalidRangeException
      */
     public function setRange(float $min, float $max): void;
+
+    /**
+     * Generate a value for a provably fair game
+     * @return float
+     */
+    public function generate(): float;
+
+    /**
+     * Verify a value for a provably fair game
+     * @param float $result
+     * @return bool
+     */
+    public function verify(float $result): bool;
 }

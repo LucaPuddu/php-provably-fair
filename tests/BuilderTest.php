@@ -5,15 +5,15 @@ namespace PhpProvablyFair\Tests;
 use PhpProvablyFair\Builder;
 use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
 use PhpProvablyFair\Exceptions\InvalidRangeException;
-use PhpProvablyFair\Interfaces\BuilderInterface;
 use PhpProvablyFair\Interfaces\ProvablyFairInterface;
+use PhpProvablyFair\ProvablyFair;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 
 class BuilderTest extends TestCase
 {
-    /** @var BuilderInterface */
+    /** @var Builder */
     private $builder;
     /** @var ProvablyFairInterface */
     private $provablyFair;
@@ -24,13 +24,21 @@ class BuilderTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->builder = $this->getMockForAbstractClass(Builder::class);
+        $this->builder = new Builder();
 
         $this->provablyFair = $this->getMockBuilder(ProvablyFairInterface::class)->getMock();
         $reflection = new ReflectionClass($this->builder);
         $reflection_property = $reflection->getProperty('provablyFair');
         $reflection_property->setAccessible(true);
         $reflection_property->setValue($this->builder, $this->provablyFair);
+    }
+
+    /**
+     * @test
+     */
+    public function itBuildsAProvablyFairObject()
+    {
+        $this->assertInstanceOf(ProvablyFair::class, (new Builder())->build());
     }
 
     /**

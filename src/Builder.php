@@ -6,10 +6,18 @@ use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
 use PhpProvablyFair\Interfaces\BuilderInterface;
 use PhpProvablyFair\Interfaces\ProvablyFairInterface;
 
-abstract class Builder implements BuilderInterface
+class Builder implements BuilderInterface
 {
     /** @var ProvablyFairInterface */
     protected $provablyFair;
+
+    /**
+     * Builder constructor.
+     */
+    public function __construct()
+    {
+        $this->provablyFair = new ProvablyFair();
+    }
 
     /**
      * @param string $algorithm
@@ -62,5 +70,13 @@ abstract class Builder implements BuilderInterface
     {
         $this->provablyFair->setRange($min, $max);
         return $this;
+    }
+
+    /**
+     * @return ProvablyFairInterface
+     */
+    public function build(): ProvablyFairInterface
+    {
+        return $this->provablyFair;
     }
 }
