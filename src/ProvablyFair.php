@@ -149,6 +149,6 @@ class ProvablyFair implements ProvablyFairInterface
      */
     public function verify(float $result): bool
     {
-        return bccomp("{$result}", "{$this->generate()}") == 0;
+        return bccomp("{$result}", "{$this->generate()}", 6) == 0;
     }
 }
