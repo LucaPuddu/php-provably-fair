@@ -2,9 +2,9 @@
 
 namespace PhpProvablyFair\Tests;
 
-use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
-use PhpProvablyFair\Exceptions\InvalidRangeException;
-use PhpProvablyFair\ProvablyFair;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidRangeException;
+use LucaPuddu\PhpProvablyFair\ProvablyFair;
 use PHPUnit\Framework\TestCase;
 
 class ProvablyFairTest extends TestCase

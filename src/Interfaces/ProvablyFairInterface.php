@@ -1,9 +1,9 @@
 <?php
 
-namespace PhpProvablyFair\Interfaces;
+namespace LucaPuddu\PhpProvablyFair\Interfaces;
 
-use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
-use PhpProvablyFair\Exceptions\InvalidRangeException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidRangeException;
 
 interface ProvablyFairInterface
 {

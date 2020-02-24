@@ -2,11 +2,11 @@
 
 namespace PhpProvablyFair\Tests;
 
-use PhpProvablyFair\Builder;
-use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
-use PhpProvablyFair\Exceptions\InvalidRangeException;
-use PhpProvablyFair\Interfaces\ProvablyFairInterface;
-use PhpProvablyFair\ProvablyFair;
+use LucaPuddu\PhpProvablyFair\Builder;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidRangeException;
+use LucaPuddu\PhpProvablyFair\Interfaces\ProvablyFairInterface;
+use LucaPuddu\PhpProvablyFair\ProvablyFair;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;

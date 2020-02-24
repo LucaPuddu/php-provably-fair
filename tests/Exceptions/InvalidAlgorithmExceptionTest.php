@@ -1,8 +1,8 @@
 <?php
 
-namespace PhpProvablyFair\Tests\Exceptions;
+namespace LucaPuddu\PhpProvablyFair\Tests\Exceptions;
 
-use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidAlgorithmException;
 use PHPUnit\Framework\TestCase;
 
 class InvalidAlgorithmExceptionTest extends TestCase

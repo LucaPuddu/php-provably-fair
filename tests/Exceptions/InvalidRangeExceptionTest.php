@@ -1,8 +1,8 @@
 <?php
 
-namespace PhpProvablyFair\Tests\Exceptions;
+namespace LucaPuddu\PhpProvablyFair\Tests\Exceptions;
 
-use PhpProvablyFair\Exceptions\InvalidRangeException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidRangeException;
 use PHPUnit\Framework\TestCase;
 
 class InvalidRangeExceptionTest extends TestCase

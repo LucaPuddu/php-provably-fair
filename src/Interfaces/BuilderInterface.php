@@ -1,9 +1,9 @@
 <?php
 
-namespace PhpProvablyFair\Interfaces;
+namespace LucaPuddu\PhpProvablyFair\Interfaces;
 
-use PhpProvablyFair\Builder;
-use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use LucaPuddu\PhpProvablyFair\Builder;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidAlgorithmException;
 
 interface BuilderInterface
 {
