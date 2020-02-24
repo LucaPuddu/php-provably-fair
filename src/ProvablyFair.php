@@ -1,10 +1,10 @@
 <?php
 
-namespace PhpProvablyFair;
+namespace LucaPuddu\PhpProvablyFair;
 
-use PhpProvablyFair\Exceptions\InvalidAlgorithmException;
-use PhpProvablyFair\Exceptions\InvalidRangeException;
-use PhpProvablyFair\Interfaces\ProvablyFairInterface;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidAlgorithmException;
+use LucaPuddu\PhpProvablyFair\Exceptions\InvalidRangeException;
+use LucaPuddu\PhpProvablyFair\Interfaces\ProvablyFairInterface;
 
 class ProvablyFair implements ProvablyFairInterface
 {

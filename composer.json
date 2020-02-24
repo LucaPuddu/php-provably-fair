@@ -27,12 +27,12 @@
   },
   "autoload": {
     "psr-4": {
-      "PhpProvablyFair\\": "src/"
+      "LucaPuddu\\PhpProvablyFair\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "PhpProvablyFair\\Test\\": "test/"
+      "LucaPuddu\\PhpProvablyFair\\Test\\": "test/"
     }
   },
   "scripts": {

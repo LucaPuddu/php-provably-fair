@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpProvablyFair\Exceptions;
+namespace LucaPuddu\PhpProvablyFair\Exceptions;
 
 use Exception;
 
