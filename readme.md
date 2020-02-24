@@ -44,21 +44,21 @@ Get the full list of supported algorithms [here](https://www.php.net/manual/en/f
 ### Roll a number
 ```php
 ...
-$output = $generator->generate();
+$output = $generator->roll();
 echo $output;   //38.325308655221
 
 // Change ProvablyFair state
-$generator->setNonce = 'new nonce';
+$generator->setNonce('new nonce');
 
 // Roll a new number
-$output = $generator->generate();
+$output = $generator->roll();
 echo $output;   //23.752100169784
 ```
 
 ### Verify a roll
 ```
 ...
-$generator->verify(34.3343434); // true
+$generator->verify(38.325308655221); // true
 ```
 
 ### Security
