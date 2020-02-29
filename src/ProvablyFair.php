@@ -142,13 +142,9 @@ class ProvablyFair implements ProvablyFairInterface
     public function roll(): float
     {
         $hash = hash_hmac($this->algorithm, "{$this->clientSeed}-{$this->nonce}", $this->serverSeed);
-        $hash = substr($hash, 6, self::BYTES);
-        $toDec = hexdec($hash);
-        $normalizeToMax = $toDec / (16 ** self::BYTES - 1);
-        $scaleToRange = $normalizeToMax * ($this->max - $this->min);
-        $shiftToMin = $scaleToRange + $this->min;
+        $normalized = hexdec($hash) / (16 ** strlen($hash));
 
-        return $shiftToMin;
+        return $this->min + $normalized * ($this->max - $this->min);
     }
 
     /**

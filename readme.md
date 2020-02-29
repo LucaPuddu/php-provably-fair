@@ -14,38 +14,38 @@ composer require lucapuddu/php-provably-fair
 ```
 
 ## The algorithm
-#### Example parameters
+#### Parameters values used in this example
 ```php
 $algorithm = 'sha256';
 $serverSeed = 'server seed';
 $clientSeed = 'client seed';
 $nonce = '1';
-$min = 0;
-$max = 100;
+$min = 15;
+$max = 96;
 ```
 
 #### Steps
-1. A 64-long hexadecimal string is computed using [hash_hmac](https://www.php.net/manual/en/function.hash-hmac.php). The function 
-uses the `$serverSeed` as key, and the `$clientSeed` and `$nonce` as data, concatenated with an _hyphen_, like this:  
-`hash_hmac($algorithm, "{$clientSeed}-{$nonce}", $serverSeed);`  
-**Output**: `78ed9330f00055f15765cb141088f316d507204a745ad4800fd719fcbfca071a`
+1. A hexadecimal string of variable length (depending on the algorithm used) is computed with [hash_hmac](https://www.php.net/manual/en/function.hash-hmac.php). The function 
+uses the `$serverSeed` as key, and the `$clientSeed` and `$nonce` as data, concatenated with an _hyphen_:  
+```php
+$output1 = hash_hmac($algorithm, "{$clientSeed}-{$nonce}", $serverSeed);
+echo $output1; // 78ed9330f00055f15765cb141088f316d507204a745ad4800fd719fcbfca071a
+```
 
-2. The characters from position _7 to 12_ are extracted from the hash and converted to integer using [hexdec](https://www.php.net/manual/en/function.hexdec.php).  
+2. `$output1` is then scaled to a number from `0` to `1`, by converting it to an integer number and then
+dividing it by the maximum result possible (which is equal to `16 ^ length of $output1`)
+```php
+$output2 = hexdec($output1) / (16 ** strlen($output1));
+echo $output2; // 0.47237510628475
+```  
 
-|  |Value|  
-| :---: | :---: |  
-|   **Original hash**  | 78ed93**30f000**55f15765cb141088f316d507204a745ad4800fd719fcbfca071a |  
-| **Extracted string** |30f000|  
-|      **To int**     |3207168|
+3. `$output2` is scaled accordingly to `min` and `max`:  
+```php
+$result = $min + $output2 * ($max - $min);
+echo $result; // 53.26238360906475‬
+```
 
-3. The resulting number is scaled to a range from 0 to 1 by dividing it by `hexdec('ffffff')`, which is the maximum
-result obtainable from the 6-byte extracted hex string.  
-`3207168 / hexdec('ffffff')`  
-**Output:** 0.19116212076915
-
-4. The previous output is scaled accordingly to `min` and `max`:  
-`$min + 0.19116212076915 * ($max - $min)`  
-**Final result:** 19.116212076915
+4. The **result** is returned.
 
 ## Usage
 
