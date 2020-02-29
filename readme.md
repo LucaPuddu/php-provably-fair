@@ -10,7 +10,7 @@ This library provides functions to generate and verify provably fair games.
 Via Composer
 
 ``` bash
-composer require lpuddu/php-provably-fair
+composer require lucapuddu/php-provably-fair
 ```
 
 ## Usage
@@ -73,10 +73,9 @@ If you discover any security related issues, please use the issue tracker on git
 
 MIT. Please see the [license file](license.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/lpuddu/php-provably-fair.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/lpuddu/php-provably-fair.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/lucapuddu/php-provably-fair.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/lucapuddu/php-provably-fair.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/lpuddu/php-provably-fair
-[link-downloads]: https://packagist.org/packages/lpuddu/php-provably-fair
-[link-travis]: https://travis-ci.org/lpuddu/php-provably-fair
+[link-packagist]: https://packagist.org/packages/lucapuddu/php-provably-fair
+[link-downloads]: https://packagist.org/packages/lucapuddu/php-provably-fair
 [link-author]: https://github.com/LucaPuddu
