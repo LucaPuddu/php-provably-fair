@@ -38,7 +38,14 @@ uses the `$serverSeed` as key, and the `$clientSeed` and `$nonce` as data, conca
 | **Extracted string** |30f000|  
 |      **To int**     |3207168|
 
-3. dd
+3. The resulting number is scaled to a range from 0 to 1 by dividing it by `hexdec('ffffff')`, which is the maximum
+result obtainable from the 6-byte extracted hex string.  
+`3207168 / hexdec('ffffff')`  
+**Output:** 0.19116212076915
+
+4. The previous output is scaled accordingly to `min` and `max`:  
+`$min + 0.19116212076915 * ($max - $min)`  
+**Final result:** 19.116212076915
 
 ## Usage
 
