@@ -21,15 +21,15 @@ class ProvablyFairTest extends TestCase
     public function dataProvider()
     {
         return [
-            ['sha512/256', 'server seed', 'client seed', '1', 90, 100, 93.63660118798],
-            ['sha512/256', 'other server seed', 'client seed', '1', 90, 100, 91.116426653649],
-            ['sha512/256', 'server seed', 'other client seed', '1', 90, 100, 95.675884823554],
-            ['sha512/256', 'other server seed', 'other client seed', '1', 90, 100, 95.732252343431],
-            ['sha512/256', 'server seed', 'client seed', '1', 0, 100, 36.366011879802],
-            ['sha512', 'server seed', 'client seed', '1', 0, 100, 13.194889616662],
-            ['sha512', 'server seed', 'client seed', '1', 0, 100, 13.194889616662],
-            ['sha256', 'server seed', 'client seed', 'nonce', 23.75, 44, 38.325308655221],
-            ['sha256', 'server seed', 'client seed', 'new nonce', 23.75, 44, 23.752100169784],
+            ['sha512/256', 'server seed', 'client seed', '1', 90, 100, 97.50919006089],
+            ['sha512/256', 'other server seed', 'client seed', '1', 90, 100, 93.858515686776],
+            ['sha512/256', 'server seed', 'other client seed', '1', 90, 100, 94.108397702925],
+            ['sha512/256', 'other server seed', 'other client seed', '1', 90, 100, 98.912321670786],
+            ['sha512/256', 'server seed', 'client seed', '1', 0, 100, 75.091900608898],
+            ['sha512', 'server seed', 'client seed', '1', 0, 100, 97.333312821084],
+            ['sha512', 'server seed', 'client seed', '1', 0, 100, 97.333312821084],
+            ['sha256', 'server seed', 'client seed', 'nonce', 23.75, 44, 39.396029461939],
+            ['sha256', 'server seed', 'client seed', 'new nonce', 23.75, 44, 26.524963826066],
         ];
     }
 
