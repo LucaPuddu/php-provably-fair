@@ -31,13 +31,14 @@ uses the `$serverSeed` as key, and the `$clientSeed` and `$nonce` as data, conca
 **Output**: `78ed9330f00055f15765cb141088f316d507204a745ad4800fd719fcbfca071a`
 
 2. The characters from position _7 to 12_ are extracted from the hash and converted to integer using [hexdec](https://www.php.net/manual/en/function.hexdec.php).  
-|    Description   |                               Value                                  |  
-| ---------------- | -------------------------------------------------------------------- |  
-|   Original hash  | 78ed93**30f000**55f15765cb141088f316d507204a745ad4800fd719fcbfca071a |  
-| Extracted string |                              30f000                                  |  
-|      To int      |                             3207168                                  |
 
-3. 
+|  |Value|  
+| :---: | :---: |  
+|   **Original hash**  | 78ed93**30f000**55f15765cb141088f316d507204a745ad4800fd719fcbfca071a |  
+| **Extracted string** |30f000|  
+|      **To int**     |3207168|
+
+3. dd
 
 ## Usage
 
