@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": "^7.2|^8.0",
-    "ext-bcmath": "^7.3"
+    "ext-bcmath": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5",
