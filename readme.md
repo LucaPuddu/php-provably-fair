@@ -62,8 +62,7 @@ $generator = Builder::make()
                     ->serverSeed($serverSeed)
                     ->clientSeed($clientSeed)
                     ->nonce($nonce)
-                    ->min($min)
-                    ->max($max)
+                    ->range($min, $max)
                     ->build();
 ```
 ##### Default values
